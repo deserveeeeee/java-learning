@@ -64,11 +64,23 @@ public class MainClass {
 		
 //		7.	建立Person类，建立animal类：
 //		a. 给Person类增加一个属性，描述这个人的所有宠物。
-		
 //		b. Person最多只能有三只宠物。
-		
 //		c. Person可以根据喜爱程度排序（思考这个属性应该如何设置）
-
+		Person p1 = new Person();
+		p1.havePet("cat", "Tom", 5);
+		p1.havePet("Dog", "Jerry", 11);
+		p1.havePet("Horse", "Jack", 8);
+		p1.havePet("fish", "water", 3);
+		p1.sort();
+		for (Animal pet : p1.ownPets) {
+			System.out.println(pet.getAnimal());
+		}
+		
 	}
-
+	
+//	8.预习
+//	1. 自定义异常类、文件操作
+//	检查类异常、运行时异常、错误
+//	Throwable
+//	
 }
