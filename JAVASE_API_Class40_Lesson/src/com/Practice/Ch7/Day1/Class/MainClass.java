@@ -63,7 +63,7 @@ public class MainClass {
 		strings.add("werq3w");
 		strings.add("2q3rwe");
 		strings.add("efsw");
-		
+	
 		strings.sort(new Comparator<String>() {
 			@Override
 			public int compare(String o1, String o2) {
