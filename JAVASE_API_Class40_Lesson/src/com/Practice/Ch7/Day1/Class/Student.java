@@ -7,30 +7,27 @@ public class Student {
 	String name;
 	ArrayList<Integer> scores = new ArrayList<Integer>();
 	
-	public Student(int age,String name){
+	public Student(int age,String name,int scores []){
 		this.age = age;
 		this.name = name;
+		for (int i : scores) {
+			this.scores.add(i);
+		}
 	}
 	
-	public void examination(int scoreChiese,int scoreMath,
-			int scoreEnglish,int scoreScience,int scoreArts){
-		this.scores.add(scoreChiese);
-		this.scores.add(scoreMath);
-		this.scores.add(scoreEnglish);
-		this.scores.add(scoreScience);
-		this.scores.add(scoreArts);
-	}
-	/*平均值方法*/
+	
+	
+	/*某个学生平均分方法*/
 	public double ave(){
 		int sumScore = 0;
-		for(int i = 0;i<=4;i++){
+		for (Integer i: scores) {
 			sumScore += (this.scores.get(i));
 		}
 		return (sumScore/5);
 		
 	}
 	
-	/*学生挂科数方法*/
+	/*某个学生挂科的数量方法*/
 	public int failCount(){
 		int count = 0;
 		for (int i = 0; i < 5; i++) {
