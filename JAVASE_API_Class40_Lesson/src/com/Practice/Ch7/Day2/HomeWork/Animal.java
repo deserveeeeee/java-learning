@@ -21,6 +21,6 @@ public class Animal {
 		animal.put("宠物的名字", this.name);
 		animal.put("宠物的种类", this.category);
 		animal.put("对宠物的喜欢程度", this.like);
-		return null;
+		return animal;
 	}
 }
