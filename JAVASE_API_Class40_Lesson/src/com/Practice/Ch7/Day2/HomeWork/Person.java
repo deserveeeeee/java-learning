@@ -1,6 +1,7 @@
 package com.Practice.Ch7.Day2.HomeWork;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 public class Person {
@@ -29,6 +30,22 @@ public class Person {
 //	}
 	
 	ArrayList<Animal> ownPets = new ArrayList<Animal>();
+	
+	
+	
+	public ArrayList<Animal> getOwnPets() {
+		return ownPets;
+	}
+
+	public void setOwnPets(ArrayList<Animal> ownPets) {
+		if (ownPets.size() >= 3) {
+			System.out.println("添加失败，您不能再拥有更多的宠物啦！");
+		}else {
+			this.ownPets = ownPets;
+		}
+		this.ownPets = ownPets;
+	}
+
 	/*方法二：新拥有已知宠物*/
 	void havePet(String category,String name,int like){
 		if(ownPets.size()<3){
@@ -39,14 +56,18 @@ public class Person {
 	}
 	
 	/*方法二：将的宠物按照喜欢程度进行排序*/
+	void sort1(){
+		Collections.sort(this.ownPets);
+	}
+	
 	void sort(){
 		ownPets.sort(new Comparator<Animal>() {
 			@Override
 			public int compare(Animal o1, Animal o2) {
 				if (o1.like > o2.like) {
-					return -1;
-				}else if(o1.like < o2.like) {
 					return 1;
+				}else if(o1.like < o2.like) {
+					return -1;
 				}
 				return 0;
 			}

@@ -43,7 +43,7 @@ public class MainClass {
 //		5.	从上述map中，删除包含字母a的单词。
 		ArrayList<String> templist = new ArrayList<String>();
 		for (String i : map3.keySet()) {
-			System.out.println(i);
+//			System.out.println(i);
 			if (i.contains("a")) {
 				templist.add(i);
 			}
@@ -77,7 +77,6 @@ public class MainClass {
 		}
 		
 	}
-	
 //	8.预习
 //	1. 自定义异常类、文件操作
 //	检查类异常、运行时异常、错误
