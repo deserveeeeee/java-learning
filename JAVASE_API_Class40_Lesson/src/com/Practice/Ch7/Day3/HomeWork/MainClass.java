@@ -18,7 +18,6 @@ public class MainClass {
 		File  desktop = new File("C:\\Users\\Administrator\\Desktop");
 		File [] files = desktop.listFiles();
 		ArrayList<String> filesQQ = new ArrayList<String>();
-		
 		for (File file : files) {
 			if (file.isFile()) {
 				filesQQ.add(file.getName());
@@ -48,6 +47,8 @@ public class MainClass {
 			if (!jingyesi.exists()) {
 				jingyesi.createNewFile();
 				FileWriter writer = new FileWriter(jingyesi);
+//				FileWriter writer = new FileWriter(jingyesi, append)
+//				append：这句后面选择true则每次都重新拼接，如果选false或者没有则覆盖
 				BufferedWriter bufferedWriter = new BufferedWriter(writer);
 				bufferedWriter.write(jys);
 				bufferedWriter.close();
@@ -62,8 +63,8 @@ public class MainClass {
 		File  qiangjinjiu = new File("C:\\Users\\Administrator\\Desktop\\qiangjinjiu.txt");
 		String q1 = "";
 		try {
-			FileReader fileReader = new FileReader(jingyesi);
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			FileReader fileReader = new FileReader(jingyesi);   // 读取文件的对象
+			BufferedReader bufferedReader = new BufferedReader(fileReader);  //读取文件的方式：将原本字节读取的方式换位字符读取方式
 			try {
 				String line = bufferedReader.readLine();
 				while (line != null) {
@@ -107,6 +108,7 @@ public class MainClass {
 		
 //		作业B:
 //		1. 给Person增加一个方法，使其能够将所有属性(name、age、id)写入文件保存。
+//		作业B在github上同步失败了
 		new Person("Molly",23,"20180101").copyPerson();;
 		
 //		2. 第三题完成后，从对应文件中读出Person，然后重新生成原来对象的复制体。
