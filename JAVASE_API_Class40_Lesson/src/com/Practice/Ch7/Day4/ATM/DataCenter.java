@@ -1,9 +1,11 @@
 package com.Practice.Ch7.Day4.ATM;
 
+import java.util.Map;
+
 public class DataCenter {
 	
 	/*用户对象数组*/
-	
+	Map<K, V>
 	static UserData [] allUser = new UserData[20];
 	/*对象个数*/
 	static int userCount = 0;
