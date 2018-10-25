@@ -50,12 +50,12 @@ public class ATMSystem implements BackDelegate {
 		String pass = tool.input(1);
 		
 		//登录验证
-		int index = tool.findUser(acc);
-		if (tool.findUser(acc) != -1) {//查找用户，如果找到了，必然是0-19
-			if (pass.equals(DataCenter.allUser[index].getPass())) {
+		
+		if (tool.findUser(acc)) {//查找用户，如果找到了，则可以登录
+			if (pass.equals(DataCenter.allUser.get(acc).getPass())) {
 				tool.output(0);
 				//1. 保留登录用户
-				DataCenter.logIndex = index;
+				DataCenter.logAcc = acc;
 				//2. 让登录用户开始进行2级操作，展示2级菜单
 				logUser = new UserAction();
 				logUser.delegate = this;
@@ -74,21 +74,14 @@ public class ATMSystem implements BackDelegate {
 		String acc = tool.input(0);
 		//输入密码
 		String pass = tool.input(1);
-		
-		if (tool.findUser(acc) != -1) {//查找用户，如果找到了，必然是0-19
+		//输入钱数
+		Double money = tool.input1(4);
+		if (tool.findUser(acc)) {//查找用户，找到了则注册失败
 			tool.output(3);
 		} else {
+			DataCenter.addUser(acc, pass, money);
 			//注册成功
 			tool.output(4);
-			
-			UserData newUser = new UserData();
-			newUser.setAcc(acc);
-			newUser.setPass(pass);
-			
-			//目前有userCount个人，那么新用户的下标就是userCount
-			DataCenter.allUser[DataCenter.userCount] = newUser; 
-			DataCenter.userCount ++;//注册用户数量加1
-			
 			this.enterSystem();//这样用有什么问题？
 		}
 	}

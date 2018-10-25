@@ -2,9 +2,9 @@ package com.Practice.Ch7.Day4.ATM;
 
 public class UserData {
 	
-	String acc;			/*账号*/
-	String pass;		/*密码*/
-	double money;		/*金额*/
+	private String acc;			/*账号*/
+	private String pass;		/*密码*/
+	private double money;		/*金额*/
 	
 	public String getAcc() {
 		return acc;
@@ -22,10 +22,10 @@ public class UserData {
 	public double getMoney() {
 		return money;
 	}
-	public void setMoney(double money) {
+	public void setMoney(double money) throws Exception {
 		if (money < 0) {
 			//自定义Exception
-			System.out.println("金额异常");//此处不处理，java中这种异常，采取的是抛出到上级
+			throw new MyProjectException(102);
 		} else {
 			this.money = money;
 		}

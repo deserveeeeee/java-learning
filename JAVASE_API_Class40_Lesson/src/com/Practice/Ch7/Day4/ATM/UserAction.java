@@ -41,8 +41,8 @@ public class UserAction {
 		//当前用户是谁？
 		//如果logIndex没有值？
 		//-1在数组下表中，会被当做很大的正整数
-		UserData loginUser = DataCenter.allUser[DataCenter.logIndex];
-		System.out.println("您当前的余额为："+loginUser.money);
+		System.out.println("您当前的余额为："+
+		DataCenter.allUser.get(DataCenter.logAcc).getMoney());
 	}
 	
 	//修改密码操作
@@ -54,15 +54,26 @@ public class UserAction {
 	void setMoney() {
 		int option = Integer.parseInt(tool.input(3));
 		double money = Double.parseDouble(tool.input(4));
-		UserData loginUser = DataCenter.allUser[DataCenter.logIndex];
-		
+//		当前登录用户
+		UserData loginUser = DataCenter.allUser.get(DataCenter.logAcc);
 		if (option == 1) {//存钱
-			loginUser.setMoney(loginUser.getMoney()+money);
+//			当前登录客户的钱
+			Double newMoney = loginUser.getMoney() + money;
+			try {
+				loginUser.setMoney(newMoney);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else if (option == 2) {//取钱
-			//这里不再多做判断，金额为负的情况
-			loginUser.setMoney(loginUser.getMoney()-money);
-		} else {
-			System.out.println("输入错误");
+//			当前登录客户的钱
+			Double newMoney = loginUser.getMoney() - money;
+			try {
+				loginUser.setMoney(newMoney);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
