@@ -109,7 +109,7 @@ public class MainClass {
 //		作业B:
 //		1. 给Person增加一个方法，使其能够将所有属性(name、age、id)写入文件保存。
 //		作业B在github上同步失败了
-		new Person("Molly",23,"20180101").copyPerson();;
+//		new Person("Molly",23,"20180101").copyPerson();;
 		
 //		2. 第三题完成后，从对应文件中读出Person，然后重新生成原来对象的复制体。
 
