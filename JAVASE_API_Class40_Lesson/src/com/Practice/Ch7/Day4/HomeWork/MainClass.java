@@ -1,6 +1,9 @@
 package com.Practice.Ch7.Day4.HomeWork;
 
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -85,6 +88,14 @@ public class MainClass {
 			myProperties.setProperty("account",fields[0].get(user).toString());
 			myProperties.setProperty("pass",fields[1].get(user).toString());
 			myProperties.setProperty("money",fields[2].get(user).toString());
+			String path = "src\\com\\Practice\\Ch7\\Day4\\HomeWork\\UserInfo";
+			try {
+				myProperties.load(new FileReader(path));
+				myProperties.store(new FileWriter(path), "userInfo");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

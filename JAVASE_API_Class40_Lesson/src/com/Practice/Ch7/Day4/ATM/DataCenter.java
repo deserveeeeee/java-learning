@@ -3,6 +3,7 @@ package com.Practice.Ch7.Day4.ATM;
 public class DataCenter {
 	
 	/*用户对象数组*/
+	
 	static UserData [] allUser = new UserData[20];
 	/*对象个数*/
 	static int userCount = 0;
@@ -11,6 +12,7 @@ public class DataCenter {
 	
 	static void initData() {
 		// 初始化所有默认的账户信息
+		
 		UserData user1 = new UserData();
 		user1.acc = "admin";
 		user1.pass = "123456";
@@ -34,4 +36,6 @@ public class DataCenter {
 		userCount = 3;//用户数量
 	}
 	
+	
+
 }
