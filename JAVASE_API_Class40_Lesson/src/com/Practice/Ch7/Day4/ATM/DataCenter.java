@@ -1,4 +1,4 @@
-Dapackage com.Practice.Ch7.Day4.ATM;
+package com.Practice.Ch7.Day4.ATM;
 
 import java.io.File;
 import java.io.FileNotFoundException;

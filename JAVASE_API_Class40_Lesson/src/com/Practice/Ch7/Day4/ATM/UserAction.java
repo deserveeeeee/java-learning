@@ -61,6 +61,8 @@ public class UserAction {
 			Double newMoney = loginUser.getMoney() + money;
 			try {
 				loginUser.setMoney(newMoney);
+				Bills bills = new Bills();
+				bills.setMoney(loginUser, money, option);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -70,6 +72,8 @@ public class UserAction {
 			Double newMoney = loginUser.getMoney() - money;
 			try {
 				loginUser.setMoney(newMoney);
+				Bills bills = new Bills();
+				bills.setMoney(loginUser, money, option);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
