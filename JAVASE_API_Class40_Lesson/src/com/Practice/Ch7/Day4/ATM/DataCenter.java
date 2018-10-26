@@ -14,7 +14,9 @@ public class DataCenter {
 	/*用户对象数组*/
 	static Map<String, UserData> allUser = new HashMap<String, UserData>();
 	static String logAcc;
-	static void initData(){
+//	todo-list:
+//	这里应该要修改为updateAllUser，而不是initData。这样的化才能保证每次注册然后能登录
+	static public void updateAllUserData(){
 		File users = new File("src\\com\\Practice\\Ch7\\Day4\\ATM\\UserInfo");
 		File [] files = users.listFiles();
 		for (File file : files) {

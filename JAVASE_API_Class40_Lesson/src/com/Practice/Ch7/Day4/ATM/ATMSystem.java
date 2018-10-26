@@ -10,7 +10,10 @@ public class ATMSystem implements BackDelegate {
 	 * c. UI包括：界面UI、用户选项？？ UI、UE、UX
 	 */
 	void start() {
-		DataCenter.initData(); 	// 准备数据
+//		DataCenter.initData(); 	// 准备数据
+//		todo-list
+//		这里需要写一个准备数据的方法
+//		是为了
 		enterSystem();			// 第一次进入系统	
 	}
 	
@@ -20,6 +23,7 @@ public class ATMSystem implements BackDelegate {
 		 * a. UI展示 
 		 * b. 数据呈现
 		 */
+		DataCenter.updateAllUserData();
 		UI.firstUI(); // 展示UI
 		/*
 		 * 3. 开始选项操作

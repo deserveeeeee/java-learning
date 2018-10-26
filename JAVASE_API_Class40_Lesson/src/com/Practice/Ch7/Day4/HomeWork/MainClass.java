@@ -1,6 +1,5 @@
 package com.Practice.Ch7.Day4.HomeWork;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
