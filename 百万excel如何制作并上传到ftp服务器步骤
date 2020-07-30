@@ -1,0 +1,112 @@
+1、pom导包
+        <!--easyexcel-->
+        <!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.1.6</version>
+        </dependency>
+2、增加对象，修改sql查询bean。只需要属性名对应就行
+3、制作模板{.属性名}
+4、
+    public void test4(){
+        ExcelWriter workBook = EasyExcel.write("temp" + sepa + "test4.xlsx", Student.class)
+                .withTemplate("template" + sepa + "template2.xlsx").build();
+        WriteSheet sheet = EasyExcel.writerSheet().build();
+        WriteSheet sheet2 = EasyExcel.writerSheet().build();
+        List<Student> students = new ArrayList<Student>();
+		/**
+		*   1、分批次查询，一万查询一次，以免增加数据库压力；
+		*	2、每次查询以后就注入到workBook中
+		*   3、如果只有一个excel文件就使用原先的方法，关闭流workBook.finish();
+		*   4、如果多于一个excel文件就使用新方法。
+		*	for (int i = 1; i <= 10; i++) {
+        *    int a = 10;// 1w一次
+        *    int x = i + a* (i - 1);
+        *    int y = i * a;
+        *    students = initData(x,y);
+        *    System.out.println("x:"+x);
+        *    System.out.println("y:"+y);
+        *    workBook.fill(students,sheet);
+		*	}
+		*/
+
+        // 最后关闭流
+        workBook.finish();
+    }
+5、将文件上传到ftp服务器中，成功后发送邮件；
+    /**
+     * 上传文件的第二种方法，优化了传输速度
+     * @param ip
+     * @param port
+     * @param name
+     * @param pwd
+     * @param remotepath 远程地址文件路径
+     * @param localpath 本地文件路径
+     * @return
+     */
+    public boolean putFileTwo(String ip,int port, String name, String pwd,String remotepath,String localpath) {
+    	System.out.println("-----ip:"+ip+"----port:"+port+"---name:"+name+"---pwd:"+pwd+"---remotepath:"+remotepath+"---localpath:"+localpath);
+        try {
+        	if(!login(ip, port, name, pwd)){
+				return false;
+			}
+        	
+//        	 //設置上傳的路徑
+//            ftp.changeWorkingDirectory(remotepath);
+            os = ftp.storeFileStream(remotepath);
+            fis = new FileInputStream(new File(localpath));
+           
+
+            byte[] b = new byte[1024];
+            int len = 0;
+            while ((len = fis.read(b)) != -1) {
+                os.write(b,0,len);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }finally {
+        	this.close();
+		}
+        return true;
+    }
+6、删除本地临时文件：
+import java.io.*;
+ 
+public class Main
+{
+    public static void main(String[] args)
+    {
+        try{
+            File file = new File("c:\\test.txt");
+            if(file.delete()){
+                System.out.println(file.getName() + " 文件已被删除！");
+            }else{
+                System.out.println("文件删除失败！");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+}
+
+
+7、poi导包尝试
+  <!-- 去除 poi -->
+  <exclusions>
+    <exclusion>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+    </exclusion>
+  </exclusions>
+  
+  
+  
+  https://blog.csdn.net/pizicai007/article/details/89645894
+  
+  https://github.com/wangming2674/easyexcel-basic-demo
+  
+  https://github.com/CoffeeFromChina/WechatCode/tree/master/ExcelDemo
+  
+  https://github.com/alibaba/easyexcel
